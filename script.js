@@ -14,23 +14,14 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  var ground_options= {
 
-    isStatic: true
-  }
-  
- 
 
-  ground = Bodies.rectangle(200,390,200,20,ground_options);  
+  ground = Bodies.rectangle(200,390,200,20,{isStatic:true});  
   World.add(world,ground);
   console.log(ground.type);
 
-  var ball_options= {
-
-    restitution:1.0
-  }
-
-  ball = Bodies.circle(200,100,20,ball_options);
+  
+  ball = Bodies.circle(200,100,20,{restitution:3, isStatic:true});
   World.add(world,ball)
   }
   
@@ -44,6 +35,18 @@ function setup() {
     
 
   } 
+
+
+function keyPressed() {
+ if (keyCode === DOWN_ARROW) {
+    ball = Bodies.circle(200, 100 , 20 , {restitution:3, isStatic:false});
+	World.add(world, ball);
+  }
+
+  
+
+}
+
 
 
 
